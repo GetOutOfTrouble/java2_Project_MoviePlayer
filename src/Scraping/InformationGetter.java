@@ -12,22 +12,19 @@ public class InformationGetter {
         try {
             imageWritter("https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Alexander_Nevsky_Poster.jpg/220px-Alexander_Nevsky_Poster.jpg"
             ,"C:\\Users\\Administrator\\Desktop\\searchformdefault\\img.jpg");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public static void imageWritter(String src, String dst) throws IOException {
-        URL imaUrl = new URL(
+        URL imaUrl12 =new URL(
                 src);
-        URL imaUrl12 = imaUrl;
         URLConnection con = imaUrl12.openConnection();
         con.getInputStream();
       BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(dst));
         InputStream in =  con.getInputStream();
         byte[] arr = new byte[in.available()];
-        int read =0;
+        int read;
         while ((read = in.read(arr, 0, arr.length))!=-1) {
             out.write(arr,0,read);
         }
