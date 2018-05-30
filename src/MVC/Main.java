@@ -14,7 +14,7 @@ public class Main extends Application {
     private  final  static  String  PropertyPATH = Controller.class.getClassLoader().getResource("").getPath()+"Properties/";
     @Override
     public void start(Stage primaryStage) throws Exception{
-        ResourceBundle bundle = InformationGetter.PropertyReader(PropertyPATH,"zh");
+        ResourceBundle bundle = InformationGetter.PropertyReader(PropertyPATH,"zh");// language :"zh" , "en"
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
         Parent root =loader.load();
         loader.setResources(bundle);
