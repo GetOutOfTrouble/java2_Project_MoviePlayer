@@ -24,20 +24,14 @@ public class InformationGetter {
         URL imaUrl12 = imaUrl;
         URLConnection con = imaUrl12.openConnection();
         con.getInputStream();
-        URL imUrl = new URL(
-                "https://upload.wikimedia.org/wikipedia/en/8/87/StarWarsMoviePoster1977.jpg");
-
-        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(dst));
+      BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(dst));
         InputStream in =  con.getInputStream();
-
         byte[] arr = new byte[in.available()];
         int read =0;
         while ((read = in.read(arr, 0, arr.length))!=-1) {
             out.write(arr,0,read);
         }
         in.close();
-//        BufferedInputStream in2 = new BufferedInputStream(imUrl.openStream());
-//        byte[] arr1 = new byte[in2.available()];
         in.close();
         out.flush();
         out.close();
