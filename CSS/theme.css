@@ -1,0 +1,50 @@
+
+.BorderPane{
+	-fx-background-image:url(../Images/004.jpg);
+}
+.combo-box{
+	-fx-background-color:#eeeeee ;
+}
+.combo-box:focused{
+	-fx-background-color: #dcdcdc;
+
+}
+.combo-box:hover {
+
+	-fx-color: #333;
+	-fx-background-color: #dcdcdc;
+}
+.
+.button {
+
+	-fx-background-color: #eeeeee;
+	-fx-background-repeat: repeat-x;
+	-fx-border-width: 1;
+	-fx-color: #333333;
+	-fx-text-shadow: #ffffff 0 1px 0;
+
+
+}
+
+.button:focused {
+	-fx-color: #333;
+	-fx-background-color: #dcdcdc;
+
+    -fx-border-color: #002d32;
+
+}
+
+.button:hover {
+    
+	-fx-color: #333;
+	-fx-background-color: #dcdcdc;
+
+}
+
+.button:armed {
+	-fx-background-color: #b3b3b3;
+}
+
+
+
+

@@ -1,0 +1,31 @@
+.animated-switch{
+    -fx-bg: #dfdfdf;
+    -fx-background-color: -fx-bg;
+    -fx-background-insets: 5px;
+    -fx-background-radius: 15px;
+}
+
+.animated-switch:hover{
+    -fx-background-color: derive(-fx-bg, 10%);
+}
+
+.animated-thumb{
+    -base-gradient: #8e8e8e;
+    -fx-fill: linear-gradient(
+            derive(-base-gradient, 60%) 0%,
+            derive(-base-gradient, 35%) 25%,
+            -base-gradient 75%,
+            -base-gradient 100%
+    );
+    -fx-stroke: rgba(45, 45, 45, 0.42);
+    -fx-stroke-width: 1px;
+}
+
+.animated-thumb:hover{
+    -fx-fill: linear-gradient(
+            derive(-base-gradient, 70%) 0%,
+            derive(-base-gradient, 45%) 25%,
+            derive(-base-gradient, 10%) 75%,
+            derive(-base-gradient, 10%) 100%
+    );
+}

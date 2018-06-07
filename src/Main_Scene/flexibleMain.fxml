@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="925.0" styleClass="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane prefHeight="46.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+               <left>
+                  <Label alignment="CENTER" contentDisplay="TOP" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" styleClass="dark-label" text="%logo" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Microsoft Tai Le Bold" size="18.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                  </Label>
+               </left>
+               <center>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                  </HBox>
+               </center>
+               <right>
+                  <ComboBox fx:id="languageSwitcher" promptText="%language" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </children>
+         <BorderPane.margin>
+            <Insets left="5.0" right="10.0" top="15.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER_LEFT" spacing="7.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="5.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <VBox alignment="CENTER" minWidth="75.0" prefWidth="75.0" spacing="8.0" HBox.hgrow="NEVER">
+               <children>
+                  <Button fx:id="search" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="95.0" prefWidth="90.0" styleClass="red" text="%search" textAlignment="RIGHT" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="category" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="90.0" styleClass="yellow" text="%category" textAlignment="RIGHT" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="history" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="95.0" prefWidth="90.0" styleClass="blue" text="%history" textAlignment="RIGHT" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <ImageView fx:id="poster1" fitHeight="300.0" fitWidth="208.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@../../Poster/Gone_With_The_Wind.jpg" />
+               </image>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="poster2" fitHeight="300.0" fitWidth="208.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Poster/Interstellar.jpg" />
+               </image>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="poster3" fitHeight="300.0" fitWidth="208.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Poster/Kagemusha.jpg" />
+               </image>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </HBox>
+   </center>
+   <bottom>
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="60.0" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane prefHeight="46.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+               <center>
+                  <HBox fx:id="toggle" alignment="BOTTOM_LEFT" maxHeight="35.0" prefHeight="20.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="BOTTOM_LEFT">
+                     <padding>
+                        <Insets bottom="5.0" left="15.0" right="15.0" />
+                     </padding>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </HBox>
+               </center>
+            </BorderPane>
+            <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-text" text="15:30">
+               <font>
+                  <Font name="Lao UI Bold" size="18.0" />
+               </font>
+               <effect>
+                  <Blend mode="SOFT_LIGHT" />
+               </effect>
+            </Text>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" right="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <right>
+      <Button fx:id="refresh" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="30.0" styleClass="purple" text="%refresh" textAlignment="JUSTIFY" wrapText="true" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="5.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+   </right>
+</BorderPane>

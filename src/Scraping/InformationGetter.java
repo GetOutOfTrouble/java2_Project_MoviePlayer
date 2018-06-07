@@ -1,7 +1,9 @@
 package Scraping;
 
+import javafx.scene.text.Text;
+
+import java.awt.*;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.PropertyResourceBundle;
@@ -22,7 +24,7 @@ public class InformationGetter {
                 src);
         URLConnection con = imaUrl12.openConnection();
         con.getInputStream();
-      BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(dst+name));
+        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(dst+name));
         BufferedInputStream in =  new BufferedInputStream(con.getInputStream());
         byte[] arr = new byte[in.available()];
         int read;
@@ -36,15 +38,26 @@ public class InformationGetter {
 
     }
 
-    public static PropertyResourceBundle PropertyReader(String PropertySourceFolder,String language) {
+    public static PropertyResourceBundle PropertyReader(String PropertySourceFolder,String feature,String language) {
         PropertyResourceBundle a= null;
-        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(PropertySourceFolder))) {
-             a = new PropertyResourceBundle(in);
-        }
-        catch (IOException e) {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(PropertySourceFolder+feature+"_"+language+".properties"),"UTF-8"))) {
+            a = new PropertyResourceBundle(in);
+        }  catch (IOException e) {
             System.err.println(" property file dose not exist : language : "+language);
             System.exit(1);
         }
         return a ;
     }
+
+    public static InputStream openImageStream(String filePath) {
+        InputStream in = null;
+        try {
+            in = new FileInputStream(filePath);
+        } catch (FileNotFoundException e) {
+            System.err.println("can not open image input stream: file can not find");
+            e.printStackTrace();
+        }
+        return  in;
+    }
+
 }

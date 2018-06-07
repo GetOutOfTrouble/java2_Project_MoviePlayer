@@ -1,4 +1,4 @@
-package MVC;
+package Main_Scene;
 public class film {
     private String filmName;//name
     private String lag;//language
