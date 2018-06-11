@@ -1,8 +1,8 @@
 package Scraping;
 
-import javafx.scene.text.Text;
+import afester.javafx.svg.SvgLoader;
+import javafx.scene.Group;
 
-import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -10,15 +10,26 @@ import java.util.PropertyResourceBundle;
 
 
 public class InformationGetter {
-    public static void main(String[] args) {
-        try {
-            String name = "mivieName"+".jpg";
-            imageWritter("https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Alexander_Nevsky_Poster.jpg/220px-Alexander_Nevsky_Poster.jpg"
-            ,"C:\\Users\\Administrator\\Desktop\\searchformdefault\\",name);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    /**
+     * @param SourcePath svg source path
+     * @param size:      0.1 is a common size for 500*500
+     * @return the image of button
+     * @throws FileNotFoundException if svg file path is not correct
+     */
+    public static Group svgGraphic(String SourcePath, double size) throws FileNotFoundException {
+        InputStream svgFile = new FileInputStream(SourcePath);
+
+        SvgLoader loader = new SvgLoader();
+        Group svgImage = loader.loadSvg(svgFile);
+        // Scale the image and wrap it in a Group to make the button
+        // properly scale to the size of the image
+        svgImage.setScaleX(size);
+        svgImage.setScaleY(size);
+        Group image = new Group(svgImage);
+        image.setAutoSizeChildren(true);
+        return image;
     }
+
     public static void imageWritter(String src, String dst,String name) throws IOException {
         URL imaUrl12 =new URL(
                 src);

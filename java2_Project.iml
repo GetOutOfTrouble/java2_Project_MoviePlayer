@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="FranzXaver_main" level="project" />
+    <orderEntry type="library" name="pinyin_searcher" level="project" />
   </component>
 </module>

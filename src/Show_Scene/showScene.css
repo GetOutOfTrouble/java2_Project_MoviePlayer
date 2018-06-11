@@ -1,0 +1,96 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#text1 {
+
+    -fx-font-weight: bold;
+
+}
+
+#text3 {
+
+    -fx-font-weight: bold;
+
+}
+
+#text3 {
+
+    -fx-font-weight: bold;
+
+}
+
+#text5 {
+
+    -fx-font-weight: bold;
+
+}
+
+#text7 {
+
+    -fx-font-weight: bold;
+
+}
+
+#text9 {
+
+    -fx-font-weight: bold;
+
+}
+
+#text11 {
+
+    -fx-font-weight: bold;
+
+}
+
+#text13 {
+
+    -fx-font-weight: bold;
+
+}
+
+#button {
+
+    -fx-text-fill: #006164;
+
+    -fx-border-radius: 60;
+
+    -fx-background-radius: 60;
+
+    -fx-padding: 10;
+
+}
+
+#button2 {
+
+    -fx-text-fill: #006164;
+
+    -fx-border-radius: 60;
+
+    -fx-background-radius: 60;
+
+    -fx-padding: 10;
+
+}
+
+#text16 {
+    -fx-font-weight: bold;
+
+}
+
+#label2 {
+    -fx-font-weight: bold;
+
+}
+
+.root {
+
+    -fx-background-color: linear-gradient(to top, #eea2a2, #7ac5d8);
+}
+
+.scroll-pane > .viewport {
+
+}
+
+.noborder {
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}  

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.MediaView?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="pand" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit"
+           styleClass="stackPane" xmlns="http://javafx.com/javafx/8">
+    <children>
+        <MediaView fx:id="mv" fitHeight="600.0" fitWidth="925.0"/>
+        <HBox fx:id="box" alignment="BOTTOM_CENTER" prefHeight="100.0" spacing="10.0"
+              StackPane.alignment="BOTTOM_CENTER">
+            <children>
+                <Button fx:id="home" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                        prefHeight="50.0" prefWidth="50.0" text="home"/>
+                <StackPane alignment="BOTTOM_CENTER" maxHeight="100.0" prefHeight="100.0" prefWidth="60.0">
+                    <children>
+                        <Button fx:id="slow" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#slow"
+                                onMouseEntered="#slowEnter" onMouseExited="#slowexit" prefHeight="50.0" prefWidth="50.0"
+                                text="slow"/>
+                        <Button fx:id="slow2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#slow"
+                                onMouseEntered="#slowEnter" onMouseExited="#slowexit" prefHeight="60.0" prefWidth="60.0"
+                                text="slow"/>
+                    </children>
+                </StackPane>
+                <StackPane alignment="BOTTOM_CENTER" maxHeight="100.0" prefHeight="100.0" prefWidth="60.0">
+                    <children>
+                        <Button fx:id="play" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                onMouseEntered="#playEnter" onMouseExited="#playexit" prefHeight="50.0" prefWidth="50.0"
+                                text="&gt;"/>
+                        <Button fx:id="play2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                onMouseEntered="#playEnter" onMouseExited="#playexit" prefHeight="60.0" prefWidth="60.0"
+                                text="&gt;"/>
+                    </children>
+                </StackPane>
+                <StackPane alignment="BOTTOM_CENTER" maxHeight="100.0" prefHeight="100.0" prefWidth="60.0">
+                    <children>
+                        <Button fx:id="fast" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#fast"
+                                onMouseEntered="#fastEnter" onMouseExited="#fastexit" prefHeight="50.0" prefWidth="50.0"
+                                text="fast"/>
+                        <Button fx:id="fast2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#fast"
+                                onMouseEntered="#fastEnter" onMouseExited="#fastexit" prefHeight="60.0" prefWidth="60.0"
+                                text="fast"/>
+                    </children>
+                </StackPane>
+                <StackPane alignment="BOTTOM_CENTER" maxHeight="100.0" prefHeight="100.0" prefWidth="60.0">
+                    <children>
+                        <Button fx:id="reload" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#re1oad"
+                                onMouseEntered="#reloadEnter" onMouseExited="#reloadexit" prefHeight="50.0"
+                                prefWidth="50.0" text="reload"/>
+                        <Button fx:id="reload2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#re1oad"
+                                onMouseEntered="#reloadEnter" onMouseExited="#reloadexit" prefHeight="60.0"
+                                prefWidth="60.0" text="reload"/>
+                    </children>
+                </StackPane>
+                <Slider fx:id="progressBar" prefWidth="250.0">
+                    <HBox.margin>
+                        <Insets bottom="17.0"/>
+                    </HBox.margin>
+                </Slider>
+                <Slider fx:id="volumeSlider" prefHeight="14.0" prefWidth="87.0" value="60.0">
+                    <HBox.margin>
+                        <Insets bottom="17.0"/>
+                    </HBox.margin>
+                </Slider>
+            </children>
+        </HBox>
+    </children>
+</StackPane>

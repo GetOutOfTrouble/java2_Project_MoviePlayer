@@ -1,0 +1,25 @@
+.button {
+    -fx-background-color: transparent;
+    -fx-background-image: none;
+    -fx-font-size: 18;
+    -fx-min-width: 38;
+    -fx-min-height: 38;
+    -fx-text-fill: #4a4a4a;
+    -fx-font-weight: bold;
+
+}
+
+.button:hover, .button:focused {
+    -fx-background-radius: 38;
+    -fx-background-color: #dddddd;
+}
+
+.button:armed {
+    -fx-background-radius: 38;
+    -fx-background-color: #b6b6b6;
+}
+
+{
+    -fx-background-image: url(../Images/004.jpg)
+;
+}

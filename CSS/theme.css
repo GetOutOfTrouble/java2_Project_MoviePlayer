@@ -14,31 +14,26 @@
 	-fx-color: #333;
 	-fx-background-color: #dcdcdc;
 }
-.
-.button {
 
+.button {
+    -fx-text-fill: black;
 	-fx-background-color: #eeeeee;
 	-fx-background-repeat: repeat-x;
-	-fx-border-width: 1;
+
+    -fx-border-width: 1;
 	-fx-color: #333333;
 	-fx-text-shadow: #ffffff 0 1px 0;
-
-
 }
 
 .button:focused {
-	-fx-color: #333;
 	-fx-background-color: #dcdcdc;
 
-    -fx-border-color: #002d32;
+    -fx-border-color: #555555;
 
 }
 
 .button:hover {
-    
-	-fx-color: #333;
 	-fx-background-color: #dcdcdc;
-
 }
 
 .button:armed {

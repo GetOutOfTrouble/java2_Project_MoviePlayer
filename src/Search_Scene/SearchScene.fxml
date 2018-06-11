@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0"
+            prefWidth="925.0" styleClass="BorderPane" xmlns="http://javafx.com/javafx/8"
+            fx:controller="Search_Scene.SearchController">
+    <top>
+        <VBox spacing="15.0">
+            <children>
+                <HBox spacing="20.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <BorderPane prefHeight="46.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+                            <center>
+                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="15.0"
+                                      BorderPane.alignment="CENTER">
+                                    <BorderPane.margin>
+                                        <Insets/>
+                                    </BorderPane.margin>
+                                    <padding>
+                                        <Insets right="15.0"/>
+                                    </padding>
+                                </HBox>
+                            </center>
+                            <right>
+                                <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-text"
+                                      text="15:30" BorderPane.alignment="CENTER">
+                                    <font>
+                                        <Font name="Lao UI Bold" size="18.0"/>
+                                    </font>
+                                    <effect>
+                                        <Blend mode="SOFT_LIGHT"/>
+                                    </effect>
+                                </Text>
+                            </right>
+                        </BorderPane>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets left="5.0" right="10.0" top="15.0"/>
+                    </BorderPane.margin>
+                </HBox>
+                <HBox alignment="BOTTOM_LEFT" spacing="5.0">
+                    <children>
+                        <TextField fx:id="in"/>
+                    </children>
+                    <padding>
+                        <Insets left="40.0"/>
+                    </padding>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets left="5.0" right="10.0" top="15.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </top>
+    <left>
+        <VBox spacing="20.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Button fx:id="caplock" mnemonicParsing="false" styleClass="smallone" text="%CapsLock"/>
+                        <Button fx:id="space" mnemonicParsing="false" styleClass="smallone" text="%space"/>
+                        <Button fx:id="back" mnemonicParsing="false" styleClass="smallone" text="%back"/>
+                    </children>
+                </HBox>
+                <GridPane alignment="CENTER" prefHeight="260.0" prefWidth="260.0" style="-fx-alignment: center;"
+                          HBox.hgrow="NEVER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <HBox.margin>
+                        <Insets bottom="50.0"/>
+                    </HBox.margin>
+                    <children>
+                        <Button fx:id="a" mnemonicParsing="false" text="A" GridPane.halignment="CENTER"
+                                GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER"/>
+                        <Button fx:id="b" mnemonicParsing="false" text="B" GridPane.columnIndex="1"
+                                GridPane.halignment="CENTER" GridPane.valignment="TOP"/>
+                        <Button fx:id="c" mnemonicParsing="false" text="C" GridPane.columnIndex="2"
+                                GridPane.halignment="CENTER" GridPane.valignment="TOP"/>
+                        <Button fx:id="d" mnemonicParsing="false" text="D" GridPane.columnIndex="3"
+                                GridPane.halignment="CENTER" GridPane.valignment="TOP"/>
+                        <Button fx:id="e" mnemonicParsing="false" text="E" GridPane.columnIndex="4"
+                                GridPane.halignment="CENTER" GridPane.valignment="TOP"/>
+                        <Button fx:id="f" mnemonicParsing="false" text="F" GridPane.columnIndex="5"
+                                GridPane.halignment="CENTER" GridPane.valignment="TOP"/>
+                        <Button fx:id="g" mnemonicParsing="false" text="G" GridPane.halignment="CENTER"
+                                GridPane.rowIndex="1" GridPane.valignment="TOP"/>
+                        <Button fx:id="h" mnemonicParsing="false" text="H" GridPane.columnIndex="1"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP"/>
+                        <Button fx:id="i" mnemonicParsing="false" text="I" GridPane.columnIndex="2"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP"/>
+                        <Button fx:id="j" mnemonicParsing="false" text="J" GridPane.columnIndex="3"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP"/>
+                        <Button fx:id="k" mnemonicParsing="false" text="K" GridPane.columnIndex="4"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP"/>
+                        <Button fx:id="l" mnemonicParsing="false" text="L" GridPane.columnIndex="5"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP"/>
+                        <Button fx:id="m" mnemonicParsing="false" text="M" GridPane.halignment="CENTER"
+                                GridPane.rowIndex="2" GridPane.valignment="TOP"/>
+                        <Button fx:id="n" mnemonicParsing="false" text="N" GridPane.columnIndex="1"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP"/>
+                        <Button fx:id="o" mnemonicParsing="false" text="O" GridPane.columnIndex="2"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP"/>
+                        <Button fx:id="p" mnemonicParsing="false" text="P" GridPane.columnIndex="3"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP"/>
+                        <Button fx:id="q" mnemonicParsing="false" text="Q" GridPane.columnIndex="4"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP"/>
+                        <Button fx:id="r" mnemonicParsing="false" text="R" GridPane.columnIndex="5"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP"/>
+                        <Button fx:id="s" mnemonicParsing="false" text="S" GridPane.halignment="CENTER"
+                                GridPane.rowIndex="3" GridPane.valignment="TOP"/>
+                        <Button fx:id="t" mnemonicParsing="false" text="T" GridPane.columnIndex="1"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP"/>
+                        <Button fx:id="u" mnemonicParsing="false" text="U" GridPane.columnIndex="2"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP"/>
+                        <Button fx:id="v" mnemonicParsing="false" text="V" GridPane.columnIndex="3"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP"/>
+                        <Button fx:id="w" mnemonicParsing="false" text="W" GridPane.columnIndex="4"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP"/>
+                        <Button mnemonicParsing="false" text="X" GridPane.columnIndex="5" GridPane.halignment="CENTER"
+                                GridPane.rowIndex="3" GridPane.valignment="TOP" fx:id="x"/>
+                        <Button fx:id="y" mnemonicParsing="false" text="Y" GridPane.halignment="CENTER"
+                                GridPane.rowIndex="4" GridPane.valignment="TOP"/>
+                        <Button fx:id="z" mnemonicParsing="false" text="Z" GridPane.columnIndex="1"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP"/>
+                        <Button fx:id="d0" mnemonicParsing="false" text="0" GridPane.columnIndex="2"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP"/>
+                        <Button fx:id="d1" mnemonicParsing="false" text="1" GridPane.columnIndex="3"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP"/>
+                        <Button fx:id="d2" mnemonicParsing="false" text="2" GridPane.columnIndex="4"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP"/>
+                        <Button fx:id="d3" mnemonicParsing="false" text="3" GridPane.columnIndex="5"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP"/>
+                        <Button fx:id="d4" mnemonicParsing="false" text="4" GridPane.halignment="CENTER"
+                                GridPane.rowIndex="5" GridPane.valignment="TOP"/>
+                        <Button fx:id="d5" mnemonicParsing="false" text="5" GridPane.columnIndex="1"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP"/>
+                        <Button fx:id="d6" mnemonicParsing="false" text="6" GridPane.columnIndex="2"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP"/>
+                        <Button fx:id="d7" mnemonicParsing="false" text="7" GridPane.columnIndex="3"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP"/>
+                        <Button fx:id="d8" mnemonicParsing="false" text="8" GridPane.columnIndex="4"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP"/>
+                        <Button fx:id="d9" mnemonicParsing="false" text="9" GridPane.columnIndex="5"
+                                GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP"/>
+                    </children>
+                </GridPane>
+            </children>
+            <padding>
+                <Insets left="20.0" top="10.0"/>
+            </padding>
+        </VBox>
+    </left>
+    <center>
+        <TableView fx:id="tbv" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="name" editable="false" prefWidth="75.0" styleClass="column-header" text="%name"/>
+                <TableColumn fx:id="country" editable="false" prefWidth="75.0" styleClass="column-header"
+                             text="%country"/>
+                <TableColumn fx:id="Director" editable="false" prefWidth="75.0" styleClass="column-header"
+                             text="%Director"/>
+                <TableColumn fx:id="category" editable="false" prefWidth="75.0" styleClass="column-header"
+                             text="%category"/>
+                <TableColumn fx:id="duration" editable="false" prefWidth="75.0" styleClass="column-header"
+                             text="%duration"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+            <BorderPane.margin>
+                <Insets bottom="40.0"/>
+            </BorderPane.margin>
+        </TableView>
+    </center>
+    <bottom>
+        <Button fx:id="home" graphicTextGap="0.0" mnemonicParsing="false" text="%home" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0"/>
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,42 @@
+
+.BorderPane {
+    -fx-background-image: url(../Images/004.jpg);
+}
+
+.button {
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-background-repeat: repeat-x;
+    -fx-border-width: 1;
+    -fx-color: #333333;
+    -fx-text-shadow: #ffffff 0 1px 0;
+
+}
+
+.button:focused {
+    -fx-background-color: transparent;
+
+    -fx-border-color: #002d32;
+
+}
+
+.button:hover {
+    -fx-background-color: transparent;
+}
+
+.button:armed {
+    -fx-background-color: transparent;
+}
+
+{
+    -fx-background-color: transparent
+;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(238, 238, 238, 0.22);
+
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 15em;
+
+}

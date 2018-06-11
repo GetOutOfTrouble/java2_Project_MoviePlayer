@@ -1,0 +1,71 @@
+.button {
+    -fx-background-color: transparent;
+    -fx-font-size: 17;
+    -fx-min-width: 38;
+    -fx-min-height: 38;
+    -fx-text-fill: #4a4a4a;
+    -fx-font-weight: bold;
+
+}
+
+.button.smallone {
+    -fx-background-color: transparent;
+    -fx-font-size: 10;
+    -fx-min-width: 38;
+    -fx-min-height: 38;
+    -fx-text-fill: #4a4a4a;
+    -fx-font-weight: bold;
+
+}
+
+.button.smallone:hover, .button.smallone:focused {
+    -fx-background-radius: 38;
+    -fx-background-color: #dddddd;
+}
+
+.button.smallone:armed {
+    -fx-background-radius: 38;
+    -fx-background-color: #b6b6b6;
+}
+
+.button:hover, .button:focused {
+    -fx-background-radius: 38;
+    -fx-background-color: #dddddd;
+}
+
+.button:armed {
+    -fx-background-radius: 38;
+    -fx-background-color: #b6b6b6;
+}
+
+.BorderPane {
+    -fx-background-image: url(../Images/004.jpg);
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-size: 16;
+    -fx-border-color: linear-gradient(to right, rgba(152, 152, 152, 0.5), #555555, rgba(152, 152, 152, 0.5));
+}
+
+.table-view {
+    -fx-text-fill: #555555;
+    -fx-font-size: 18;
+    -fx-font-family: Microsoft YaHei;
+    -fx-font-weight: bold;
+}
+
+{
+    -fx-background-color: transparent
+;
+
+}
+
+.column-header {
+    -fx-text-alignment: center;
+    -fx-text-fill: #555555;
+
+    -fx-border-width: 2;
+    -fx-alignment: center;
+}
