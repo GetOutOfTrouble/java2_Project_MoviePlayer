@@ -30,7 +30,17 @@ public class InformationGetter {
         return image;
     }
 
-    public static void imageWritter(String src, String dst,String name) throws IOException {
+    /**
+     * example:<br>
+     * String name = "mivieName"+".jpg";
+     * imageWritter(url,"C:\\Users\\Administrator\\Desktop\\searchformdefault\\",name);
+     *
+     * @param src  image url
+     * @param dst  out put destiny(folder)
+     * @param name file name
+     * @throws IOException if cannot open stream or output
+     */
+    public static void imageWritter(String src, String dst, String name) throws IOException {
         URL imaUrl12 =new URL(
                 src);
         URLConnection con = imaUrl12.openConnection();
@@ -49,7 +59,13 @@ public class InformationGetter {
 
     }
 
-    public static PropertyResourceBundle PropertyReader(String PropertySourceFolder,String feature,String language) {
+    /**
+     * @param PropertySourceFolder the location folder of the property file
+     * @param feature              Main,Search,etc.
+     * @param language             current language to load: 中文， English
+     * @return corresponding language Bundle
+     */
+    public static PropertyResourceBundle propertyReader(String PropertySourceFolder, String feature, String language) {
         PropertyResourceBundle a= null;
         try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(PropertySourceFolder+feature+"_"+language+".properties"),"UTF-8"))) {
             a = new PropertyResourceBundle(in);
@@ -57,9 +73,13 @@ public class InformationGetter {
             System.err.println(" property file dose not exist : language : "+language);
             System.exit(1);
         }
-        return a ;
+        return a;
     }
 
+    /**
+     * @param filePath image path
+     * @return corresponding path
+     */
     public static InputStream openImageStream(String filePath) {
         InputStream in = null;
         try {

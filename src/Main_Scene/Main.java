@@ -42,18 +42,32 @@ Main extends Application {
      */
     private Stage primaryStage;
 
+    /**
+     * @return the current only controller
+     */
     public static Controller getCon() {
         return con;
     }
 
-    @Override
+    /**
+     * @param args none
+     */
+    public static void main(String[] args) {
+        launch(args);
 
+    }
+
+    /**
+     * @param primaryStage initial stage to start
+     * @throws IOException if property file can not be read
+     */
+    @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
         instances[0] = this;
         con = new Controller();
         String lang = con.getLanguage();
-        ResourceBundle bundle = InformationGetter.PropertyReader(PropertyPATH, "Main", lang);// language :"中文" , "English"
+        ResourceBundle bundle = InformationGetter.propertyReader(PropertyPATH, "Main", lang);// language :"中文" , "English"
         loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("flexibleMain.fxml"));
         loader.setResources(bundle);
@@ -77,9 +91,13 @@ Main extends Application {
 
     }
 
+    /**
+     * @return root scene
+     * @throws IOException if property file can not be read
+     */
     private Parent getRoot() throws IOException {
         String lang = con.getLanguage();
-        ResourceBundle bundle = InformationGetter.PropertyReader(PropertyPATH, "Main", lang);// language :"中文" , "English"
+        ResourceBundle bundle = InformationGetter.propertyReader(PropertyPATH, "Main", lang);// language :"中文" , "English"
         loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("flexibleMain.fxml"));
         loader.setResources(bundle);
@@ -89,6 +107,11 @@ Main extends Application {
         return loader.load();
     }
 
+    /**
+     * called by controller
+     *
+     * @throws IOException if property file can not be read
+     */
     void changeSceneLanguage() throws IOException {
         Controller.stop();
         this.MainScene = new Scene(getRoot(), 925, 600);
@@ -98,20 +121,26 @@ Main extends Application {
 
     }
 
-    public static void main(String[] args) {
-        launch(args);
-
-    }
-
+    /**
+     * @return get the main scene of the only stage
+     */
     public Scene getMainScene() {
         return MainScene;
     }
 
+    /**
+     *
+     * @return get current title  of the only stage
+     */
     private String getTitle(FXMLLoader loader) {
         String title = ((PropertyResourceBundle) loader.getResources()).handleGetObject("title").toString();
         return title;
     }
 
+    /**
+     *
+     * @return get the only stage
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }

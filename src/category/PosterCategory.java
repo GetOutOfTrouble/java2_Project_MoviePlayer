@@ -25,14 +25,26 @@ import java.util.ResourceBundle;
 
 
 public class PosterCategory implements Initializable {
+    /**
+     * effect of focused image
+     */
     private Lighting light;
+    /**
+     * show category
+     */
     private String category;
+    /**
+     * current language
+     */
     private String language;
     @FXML
     private ScrollPane sp;
     @FXML
     private ImageView m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12;
 
+    /**
+     * constructor : initialize the effect
+     */
     public PosterCategory() {
         Light.Distant distant = new Light.Distant();
         distant.setAzimuth(45);
@@ -42,31 +54,28 @@ public class PosterCategory implements Initializable {
         light.setLight(distant);
     }
 
+    /**
+     * @param language current language
+     */
     public void setLanguage(String language) {
         this.language = language;
     }
 
+    /**
+     * initial the posters
+     */
     public void showPoster() {
         ImageView[] ImageViews = {m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12};
         String filename = Main.PropertyPATH + "Category_" + language + ".properties";
         String filename1 = Main.PropertyPATH + "Film_" + language + ".properties";
         Properties p = new Properties();
-        FileInputStream fis;
-        InputStreamReader isr;
         Properties p1 = new Properties();
-        FileInputStream fi;
-        InputStreamReader is;
-        try {
-            fis = new FileInputStream(filename);
-            isr = new InputStreamReader(fis, "UTF-8");
-            BufferedReader br = new BufferedReader(isr);
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+             BufferedReader b = new BufferedReader(new InputStreamReader(new FileInputStream(filename1), "UTF-8"))) {
             p.load(br);
-            fi = new FileInputStream(filename1);
-            is = new InputStreamReader(fi, "UTF-8");
-            BufferedReader b = new BufferedReader(is);
             p1.load(b);
             String[] films = p.getProperty(category).split("\\|");
-            String[] posters = new String[films.length];
             for (int i = films.length; i < ImageViews.length; i++) {
 
                 ImageView vip = ImageViews[i];
@@ -104,7 +113,7 @@ public class PosterCategory implements Initializable {
 
 
         } catch (FileNotFoundException e1) {
-            System.out.println("The file contain director->film is not found");
+            System.out.println("The file contain director->Film is not found");
             e1.printStackTrace();
         } catch (UnsupportedEncodingException e1) {
             e1.printStackTrace();
@@ -140,6 +149,12 @@ public class PosterCategory implements Initializable {
         }
     }
 
+    /**
+     * initialize the actions
+     *
+     * @param arg0 location of fxml
+     * @param arg1 resources property
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         sp.getStyleClass().add("edge-to-edge");
@@ -153,6 +168,14 @@ public class PosterCategory implements Initializable {
         });
     }
 
+    /**
+     * open the show scene
+     *
+     * @param isNight  current scene is in night mode or not
+     * @param language the showing language
+     * @param target   the chosen movie
+     * @throws MalformedURLException : to url false
+     */
     public void openShowScene(boolean isNight, String language, String target) throws MalformedURLException {
         Parent root = null;
         try {
@@ -167,14 +190,19 @@ public class PosterCategory implements Initializable {
             e.printStackTrace();
         }
         if (isNight) {
+            assert root != null;
             root.getStylesheets().add(new File("CSS\\showstage_dark.css").toURI().toURL().toExternalForm());
         } else {
+            assert root != null;
             root.getStylesheets().add(new File("CSS\\showstage.css").toURI().toURL().toExternalForm());
         }
         Scene scene = new Scene(root, 925, 600);
         Main.instances[0].getPrimaryStage().setScene(scene);
     }
 
+    /**
+     * @param category clicked category
+     */
     public void setCategory(String category) {
         this.category = category;
     }

@@ -56,23 +56,42 @@ public class MainController implements Initializable {
     private Media me;
     private String path;
 
+
+    /**
+     * @param path slider progress
+     */
     public void setPath(String path) {
         this.path = path;
     }
 
+    /**
+     * @return current time
+     */
     public double getCurrentTime() {
         return mp.getCurrentTime().toMillis();
     }
 
+    /**
+     * @param time current time
+     */
     public void setCurrentTime(double time) {
         Duration setTime = new Duration(time);
         mp.seek(setTime);
     }
 
+    /**
+     * @return total run time
+     */
     public double getTotalRunTime() {
         return me.getDuration().toMillis();
     }
 
+    /**
+     * initialize button
+     *
+     * @param arg0 location
+     * @param arg1 properties
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         home.mouseTransparentProperty().setValue(false);
@@ -93,22 +112,15 @@ public class MainController implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
-
         mv.setMediaPlayer(mp);
-
         final DoubleProperty width = mv.fitWidthProperty();
         final DoubleProperty height = mv.fitHeightProperty();
-
         width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
         height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
         mv.setPreserveRatio(true);
-
-
         progressBar.valueProperty().addListener(new InvalidationListener() {
-
             @Override
             public void invalidated(Observable arg0) {
                 if (progressBar.isValueChanging()) {
@@ -124,16 +136,11 @@ public class MainController implements Initializable {
                         setCurrentTime(progressBar.getValue());
                         mp.play();
                     }
-
                 }
-
             }
         });
-
-
         play2.setText(">");
         play.setText(">");
-
         Group finalPlays = plays;
         Group finalPlays1 = plays2;
         Group pauses = null;
@@ -144,13 +151,11 @@ public class MainController implements Initializable {
         } catch (FileNotFoundException w) {
             w.printStackTrace();
         }
-
         Group finalPauses = pauses;
         Group finalPauses1 = pauses2;
         play2.setOnAction(e -> {
             if (play2.getText().equals(">")) {
                 mp.play();
-
                 progressBar.setMax(getTotalRunTime());
                 progressBar.setMin(0);
                 mp.setRate(1);
@@ -164,40 +169,33 @@ public class MainController implements Initializable {
                 play.setText(">");
                 play.setGraphic(finalPlays);
                 play2.setGraphic(finalPlays1);
-
             }
         });
         box.setVisible(false);
 
         slow2.setVisible(false);
-
         slow.setVisible(true);
-        play2.setVisible(false);
 
+        play2.setVisible(false);
         play.setVisible(true);
 
         fast2.setVisible(false);
-
         fast.setVisible(true);
 
         reload2.setVisible(false);
-
         reload.setVisible(true);
-        mp.currentTimeProperty().addListener(new InvalidationListener() {
 
+        mp.currentTimeProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable arg0) {
                 progressBar.setValue(mp.getCurrentTime().toMillis());
 
             }
         });
-
         volumeSlider.setValue(mp.getVolume() * 100);
         volumeSlider.valueProperty().addListener(new InvalidationListener() {
-
             @Override
             public void invalidated(Observable arg0) {
-
                 mp.setVolume(volumeSlider.getValue() / 100);
             }
         });
@@ -211,27 +209,45 @@ public class MainController implements Initializable {
         });
     }
 
-
+    /**
+     * set rate = 1.5
+     * @param event when click fast
+     */
     public void fast(ActionEvent event) {
         mp.setRate(1.50);
 
     }
 
+    /**
+     *  set rate =0.5
+     * @param event when click slow
+     */
     public void slow(ActionEvent event) {
         mp.setRate(.50);
     }
 
+    /**
+     *  reload the whole movie
+     * @param event when click reload
+     */
     public void re1oad(ActionEvent event) {
         mp.seek(mp.getStartTime());
         mp.play();
     }
 
-
+    /**
+     * dynamic effect
+     * @param event when mouse move in
+     */
     public void playEnter(MouseEvent event) {
         play.setVisible(false);
         play2.setVisible(true);
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move out
+     */
     public void slowexit(MouseEvent event) {
 
         slow2.setVisible(false);
@@ -240,11 +256,19 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move in
+     */
     public void slowEnter(MouseEvent event) {
         slow.setVisible(false);
         slow2.setVisible(true);
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move out
+     */
     public void playexit(MouseEvent event) {
 
         play2.setVisible(false);
@@ -253,11 +277,19 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move in
+     */
     public void fastEnter(MouseEvent event) {
         fast.setVisible(false);
         fast2.setVisible(true);
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move out
+     */
     public void fastexit(MouseEvent event) {
 
         fast2.setVisible(false);
@@ -266,11 +298,19 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move in
+     */
     public void reloadEnter(MouseEvent event) {
         reload.setVisible(false);
         reload2.setVisible(true);
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move out
+     */
     public void reloadexit(MouseEvent event) {
 
         reload2.setVisible(false);
@@ -279,13 +319,22 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move in
+     */
     public void mouseEnter(MouseEvent event) {
         box.setVisible(true);
     }
 
+    /**
+     * dynamic effect
+     * @param event when mouse move out
+     */
     public void mouseExit(MouseEvent event) {
         box.setVisible(false);
     }
+
 
 
 }

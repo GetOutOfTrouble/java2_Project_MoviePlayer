@@ -25,13 +25,22 @@ import java.util.ResourceBundle;
 
 
 public class PosterCategory implements Initializable {
+    /**
+     * effect of focused image
+     */
     private Lighting light;
+    /**
+     * current language
+     */
     private String language;
     @FXML
     private ScrollPane sp;
     @FXML
     private ImageView m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12;
 
+    /**
+     * constructor : initialize the effect
+     */
     public PosterCategory() {
         Light.Distant distant = new Light.Distant();
         distant.setAzimuth(45);
@@ -41,10 +50,18 @@ public class PosterCategory implements Initializable {
         light.setLight(distant);
     }
 
+    /**
+     * @param language current language
+     */
     public void setLanguage(String language) {
         this.language = language;
     }
 
+    /**
+     * show history
+     *
+     * @throws MalformedURLException if image can not find
+     */
     public void showPoster() throws MalformedURLException {
         ImageView[] ImageViews = {m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12};
         String[] history = Main.instances[0].images;
@@ -74,10 +91,15 @@ public class PosterCategory implements Initializable {
                 }
             });
         }
-
-
     }
 
+
+    /**
+     * initialize the actions
+     *
+     * @param arg0 location of fxml
+     * @param arg1 resources property
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         sp.setFocusTraversable(false);
@@ -136,8 +158,10 @@ public class PosterCategory implements Initializable {
             e.printStackTrace();
         }
         if (isNight) {
+            assert root != null;
             root.getStylesheets().add(new File("CSS\\showstage_dark.css").toURI().toURL().toExternalForm());
         } else {
+            assert root != null;
             root.getStylesheets().add(new File("CSS\\showstage.css").toURI().toURL().toExternalForm());
         }
         Scene scene = new Scene(root, 925, 600);

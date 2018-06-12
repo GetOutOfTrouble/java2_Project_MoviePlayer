@@ -3,7 +3,7 @@ package Main_Scene;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class film {
+public class Film {
     /**
      * name
      */
@@ -28,13 +28,13 @@ public class film {
     /**
      * constructor
      *
-     * @param filmName name of film
-     * @param category category of film: "Action",...
-     * @param country  country where the film produced
-     * @param duration how long the film takes
-     * @param director the director of this film
+     * @param filmName name of Film
+     * @param category category of Film: "Action",...
+     * @param country  country where the Film produced
+     * @param duration how long the Film takes
+     * @param director the director of this Film
      */
-    public film(String filmName, String category, String country, String duration, String director) {
+    public Film(String filmName, String category, String country, String duration, String director) {
         this.filmName = new SimpleStringProperty(filmName);
         this.category = new SimpleStringProperty(category);
         this.duration = new SimpleStringProperty(duration);
@@ -45,12 +45,12 @@ public class film {
     /**
      * void generator
      */
-    public film() {
+    public Film() {
         this(null, null, null, null, null);
     }
 
     /**
-     * @return film name
+     * @return Film name
      */
     public String getFilmName() {
 
@@ -58,7 +58,7 @@ public class film {
     }
 
     /**
-     * set film name
+     * set Film name
      *
      * @param filmName name
      */
@@ -68,7 +68,7 @@ public class film {
     }
 
     /**
-     * @return film name
+     * @return Film name
      */
     public StringProperty filmNameProperty() {
         return filmName;

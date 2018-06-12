@@ -398,9 +398,18 @@ public class Controller implements Initializable, Runnable {
             e.printStackTrace();
         }
         if (isNight) {
-            root.getStylesheets().add(new File("CSS\\showstage_dark.css").toURI().toURL().toExternalForm());
+            if (root != null) {
+                root.getStylesheets().add(new File("CSS\\showstage_dark.css").toURI().toURL().toExternalForm());
+            } else {
+                System.err.println("root is null");
+            }
         } else {
-            root.getStylesheets().add(new File("CSS\\showstage.css").toURI().toURL().toExternalForm());
+            if (root != null) {
+                root.getStylesheets().add(new File("CSS\\showstage.css").toURI().toURL().toExternalForm());
+            } else {
+                System.err.println("root is null");
+            }
+
         }
         Scene scene = new Scene(root, 925, 600);
         Main.instances[0].getPrimaryStage().setScene(scene);
@@ -418,15 +427,23 @@ public class Controller implements Initializable, Runnable {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../Search_Scene/SearchScene.fxml"));
-            loader.setResources(InformationGetter.PropertyReader(Main.PropertyPATH, "Search", language));
+            loader.setResources(InformationGetter.propertyReader(Main.PropertyPATH, "search", language));
             root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
         if (isNight) {
-            root.getStylesheets().add(new File("CSS\\search_dark.css").toURI().toURL().toExternalForm());
+            if (root != null) {
+                root.getStylesheets().add(new File("CSS\\search_dark.css").toURI().toURL().toExternalForm());
+            } else {
+                System.err.println("root is null");
+            }
         } else {
-            root.getStylesheets().add(new File("CSS\\search.css").toURI().toURL().toExternalForm());
+            if (root != null) {
+                root.getStylesheets().add(new File("CSS\\search.css").toURI().toURL().toExternalForm());
+            } else {
+                System.err.println("root is null");
+            }
         }
         Scene scene = new Scene(root, 925, 600);
         Main.instances[0].getPrimaryStage().setScene(scene);

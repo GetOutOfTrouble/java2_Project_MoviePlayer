@@ -1,6 +1,6 @@
 package Search_Scene;
 
-import Main_Scene.film;
+import Main_Scene.Film;
 
 import java.io.*;
 import java.util.*;
@@ -9,14 +9,14 @@ public class Search {
     private final static String PropertiesPath = new File("Properties").getAbsolutePath() + "\\";
 
     /**
-     * Search film information by film name
+     * search Film information by Film name
      * <p>
-     * Search film name to find film information. Use properties file "Film_English.properties"
-     * or "Film_zn.properties" to get information. Key is film name. Value is film information.
+     * search Film name to find Film information. Use properties file "Film_English.properties"
+     * or "Film_zn.properties" to get information. Key is Film name. Value is Film information.
      *
-     * @param filmname The name of the film to search
+     * @param filmname The name of the Film to search
      * @param language English/英文/中文/Chinese
-     * @return A String  consists of  the format film information of the searched film.
+     * @return A String  consists of  the format Film information of the searched Film.
      */
     private static String seachByFilmName(String filmname, String language) {
         String filename = "";
@@ -28,12 +28,7 @@ public class Search {
         }
 
         Properties p = new Properties();
-        FileInputStream fis;
-        InputStreamReader isr;
-        try {
-            fis = new FileInputStream(filename);
-            isr = new InputStreamReader(fis, "UTF-8");
-            BufferedReader br = new BufferedReader(isr);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
             p.load(br);
             if (p.containsKey(filmname)) {
                 String film = p.getProperty(filmname);
@@ -47,7 +42,7 @@ public class Search {
                 }
             }
         } catch (FileNotFoundException e1) {
-            System.out.println("The file contain director->film is not found");
+            System.out.println("The file contain director->Film is not found");
             e1.printStackTrace();
         } catch (UnsupportedEncodingException e) {
             System.out.println("The Encoding is not right");
@@ -59,14 +54,14 @@ public class Search {
     }
 
     /**
-     * Search film name by director name
+     * search Film name by director name
      * <p>
-     * Search a certain director name to find his/her films.Use properties file "Director.properties"
-     * or "Director_zn.properties" to get information. Key is director name. Value is film name.
+     * search a certain director name to find his/her films.Use properties file "Director.properties"
+     * or "Director_zn.properties" to get information. Key is director name. Value is Film name.
      *
      * @param director The director name  to search
      * @param language English/英文/中文/Chinese
-     * @return A String Array consists of  the film names of the searched director.
+     * @return A String Array consists of  the Film names of the searched director.
      */
     private static String[] seachByDirector(String director, String language) {
         String filename = "";
@@ -78,12 +73,8 @@ public class Search {
         }
         String[] b = new String[0];
         Properties p = new Properties();
-        FileInputStream fis;
-        InputStreamReader isr;
-        try {
-            fis = new FileInputStream(filename);
-            isr = new InputStreamReader(fis, "UTF-8");
-            BufferedReader br = new BufferedReader(isr);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
+
             p.load(br);
             if (p.containsKey(director)) {
                 String[] film = p.getProperty(director).replaceAll("_", " " + "").split("\\|");
@@ -97,7 +88,7 @@ public class Search {
                 }
             }
         } catch (FileNotFoundException e1) {
-            System.out.println("The file contain director->film is not found");
+            System.out.println("The file contain director->Film is not found");
             e1.printStackTrace();
         } catch (UnsupportedEncodingException e) {
             System.out.println("The Encoding is not right");
@@ -109,18 +100,18 @@ public class Search {
     }
 
     /**
-     * Search film name by Actor name
+     * search Film name by Actor name
      * <p>
-     * Search a certain actor name to find his/her films. Or Search a film co-starred by many actors together.
+     * search a certain actor name to find his/her films. Or search a Film co-starred by many actors together.
      * Attention: Use " AND ",that is space+AND+space, to connect actors name.
      * For example,"Anne Hathaway","Anne Hathaway AND Bill Irwin"
      * When use chinese, use "和" to connect names.
      * Use properties file "Starring.properties" or "Starring_zn.properties" to get information.
-     * Key is actor name. Value is film name.
+     * Key is actor name. Value is Film name.
      *
      * @param Actors   The Actor name(s) to search.
      * @param language English/英文/中文/Chinese
-     * @return A String Array consists of  the film names of the searched actors.
+     * @return A String Array consists of  the Film names of the searched actors.
      */
     public static String[] seachByActor(String Actors, String language) {
         String filename = "";
@@ -134,12 +125,8 @@ public class Search {
         String[] b = new String[0];
         Properties p = new Properties();
 
-        FileInputStream fis;
-        InputStreamReader isr;
-        try {
-            fis = new FileInputStream(filename);
-            isr = new InputStreamReader(fis, "UTF-8");
-            BufferedReader br = new BufferedReader(isr);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
+
             p.load(br);
             if (Actor.length == 1) {
                 if (p.containsKey(Actor[0])) {
@@ -197,7 +184,7 @@ public class Search {
             }
 
         } catch (FileNotFoundException e1) {
-            System.out.println("The file contain Actors->film is not found");
+            System.out.println("The file contain Actors->Film is not found");
         } catch (UnsupportedEncodingException e) {
             System.out.println("The Encoding is not right");
         } catch (IOException e) {
@@ -209,9 +196,9 @@ public class Search {
     /**
      * @param key      search key input
      * @param language used language
-     * @return film instance :search result
+     * @return Film instance :search result
      */
-    public static film[] Search(String key, String language) {
+    public static Film[] search(String key, String language) {
         String Name = seachByFilmName(key, language);
         String[] doc = seachByDirector(key, language);
         String[] act = seachByActor(key, language);
@@ -226,7 +213,7 @@ public class Search {
         for (int i = 0; i < act.length; i++) {
             total.add(act[i]);
         }
-        Set<film> filmSet = new LinkedHashSet<>();
+        Set<Film> filmSet = new LinkedHashSet<>();
         for (String e : total
                 ) {
             filmSet.add(getInfoFromProperty(e, language));
@@ -238,40 +225,35 @@ public class Search {
             String[] edoc = seachByDirector(key, "English");
             String[] eact = seachByActor(key, "English");
             Set<String> etotal = new HashSet<>();
-            if (Name.length() > 0) {
+            if (eName.length() > 0) {
                 etotal.add(key);
             }
 
-            etotal.addAll(Arrays.asList(doc));
-            etotal.addAll(Arrays.asList(act));
-            Set<film> efilmSet = new LinkedHashSet<>();
-            for (String e : total
+            etotal.addAll(Arrays.asList(edoc));
+            etotal.addAll(Arrays.asList(eact));
+            Set<Film> efilmSet = new LinkedHashSet<>();
+            for (String e : etotal
                     ) {
 
                 efilmSet.add(getInfoFromProperty(e, "English"));
 
 
             }
-            return efilmSet.toArray(new film[0]);
+            return efilmSet.toArray(new Film[0]);
         }
-        return filmSet.toArray(new film[0]);
+        return filmSet.toArray(new Film[0]);
     }
 
     /**
-     * @param name:     film name
+     * @param name:     Film name
      * @param language: used category
-     * @return film instance by property file
+     * @return Film instance by property file
      */
-    private static film getInfoFromProperty(String name, String language) {
+    private static Film getInfoFromProperty(String name, String language) {
         String filename = PropertiesPath + "Film_" + language + ".properties";
         Properties p = new Properties();
-        FileInputStream fis;
-        InputStreamReader isr;
-        film r = new film();
-        try {
-            fis = new FileInputStream(filename);
-            isr = new InputStreamReader(fis, "UTF-8");
-            BufferedReader br = new BufferedReader(isr);
+        Film r = new Film();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
             p.load(br);
             String[] mm = p.getProperty(name).split("\\|");
             String[] m = new String[mm.length - 1];
@@ -348,6 +330,10 @@ public class Search {
         return EnglishName;
     }
 
+    /**
+     * @param EnglishName english name
+     * @return corresponding chinese name
+     */
     public static String getChineseName(String EnglishName) {
         String ChineseName;
         String PropertyPath = new File("Properties").getAbsolutePath() + "\\English_中文.properties";

@@ -25,10 +25,6 @@ import java.util.ResourceBundle;
 import static Main_Scene.Main.PropertyPATH;
 
 public class ShowSceneController implements Initializable {
-    /*  final ImageView selectedImage = new ImageView();
-      Image image1 = new Image(Main.class.getResourceAsStream("a.jpg"));
-      selectedImage.setImage(image1);
-      */
     @FXML
     private ImageView poster;
     @FXML
@@ -78,14 +74,27 @@ public class ShowSceneController implements Initializable {
     private String language;
     private String target;
 
+    /**
+     * @param target clicked movie
+     */
     public void setTarget(String target) {
         this.target = target;
     }
 
+    /**
+     * set showing language
+     *
+     * @param language current language
+     */
     public void setLanguage(String language) {
         this.language = language;
     }
 
+    /**
+     * initialize information
+     *
+     * @throws MalformedURLException if there is some false when load property
+     */
     public void info() throws MalformedURLException {
         String filename = PropertyPATH + "Film_" + language + ".properties";
         Properties p = new Properties();
@@ -184,6 +193,10 @@ public class ShowSceneController implements Initializable {
         sp.getStyleClass().add("edge-to-edge");
     }
 
+    /**
+     * @param location  fxml location
+     * @param resources property
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sp.setFocusTraversable(true);
@@ -246,6 +259,10 @@ public class ShowSceneController implements Initializable {
 
     }
 
+    /**
+     * @param a movie location
+     * @throws MalformedURLException if url convert false
+     */
     private void openPlayer(String a) throws MalformedURLException {
         Parent root = null;
         try {
@@ -258,6 +275,7 @@ public class ShowSceneController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        assert root != null;
         root.getStylesheets().add(new File("CSS\\player.css").toURI().toURL().toExternalForm());
         Scene scene = new Scene(root, 925, 600);
         Main.instances[0].getPrimaryStage().setScene(scene);

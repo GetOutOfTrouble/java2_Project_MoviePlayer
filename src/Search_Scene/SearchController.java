@@ -1,8 +1,8 @@
 package Search_Scene;
 
 import Main_Scene.Controller;
+import Main_Scene.Film;
 import Main_Scene.Main;
-import Main_Scene.film;
 import Scraping.InformationGetter;
 import Show_Scene.ShowSceneController;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,13 +20,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
+import org.controlsfx.control.textfield.TextFields;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class SearchController implements Initializable {
     @FXML
@@ -44,16 +46,31 @@ public class SearchController implements Initializable {
     @FXML
     Button a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9;
     @FXML
-    TableColumn<film, String> name, country, Director, category, duration;
+    TableColumn<Film, String> name, country, Director, category, duration;
     @FXML
     private Text time;
-    private ObservableList<film> sd;
+
     private boolean isCap = true;
-    private film selected;
-    private boolean hasSeleted = false;
+    private Film selected;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        String PropertyPath = new File("Properties").getAbsolutePath() + "\\中文_English.properties";
+        Properties properties = new Properties();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(PropertyPath), "UTF-8"))) {
+            properties.load(br);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Set<Object> names = properties.keySet();
+        Set<Object> newName = new HashSet<>();
+        for (Object en : names
+                ) {
+            newName.add(en.toString().replace("_", " "));
+        }
+        TextFields.bindAutoCompletion(in, newName);
         home.setOnMouseClicked((o) -> {
             Main.instances[0].getPrimaryStage().setScene(Main.instances[0].getMainScene());
         });
@@ -85,17 +102,19 @@ public class SearchController implements Initializable {
         for (Button en : inputs
                 ) {
             en.setOnMouseClicked((o) -> {
+                in.requestFocus();
                 in.appendText(en.getText());
+
             });
             en.setOnKeyPressed((o) -> {
                 if (o.getCode().equals(KeyCode.ENTER)) {
+                    in.requestFocus();
                     in.appendText(en.getText());
                 }
             });
         }
         time.textProperty().bind(new SimpleStringProperty(Main.getCon().getTime().getText()));
         a.requestFocus();
-        film d = new film("s", "b", "is", "me", "sb");
         //set cell value factory
         name.setCellValueFactory(new PropertyValueFactory<>("filmName"));
         category.setCellValueFactory(new PropertyValueFactory<>("category"));
@@ -104,10 +123,10 @@ public class SearchController implements Initializable {
         country.setCellValueFactory(new PropertyValueFactory<>("country"));
         in.textProperty().addListener((a, b, c) -> {
             tbv.getItems().clear();
-            ObservableList<film> results = FXCollections.observableArrayList(Search.Search(c, Main.getCon().getLanguage()));
+            ObservableList<Film> results = FXCollections.observableArrayList(Search.search(c, Main.getCon().getLanguage()));
             tbv.setItems(results);
         });
-        TableColumn[] ts = {name, category, duration, Director, country};
+
         caplock.setOnMouseClicked((o) -> {
             if (isCap) {
                 for (Button en : inputs
@@ -124,8 +143,7 @@ public class SearchController implements Initializable {
             }
         });
         tbv.getSelectionModel().selectedItemProperty().addListener((a, b, c) -> {
-            selected = (film) c;
-            hasSeleted = true;
+            selected = (Film) c;
         });
         tbv.setOnMouseClicked((o) -> {
             if (o.getClickCount() > 1) {
@@ -164,6 +182,14 @@ public class SearchController implements Initializable {
 
     }
 
+    /**
+     * open the show scene
+     *
+     * @param isNight  current scene is in night mode or not
+     * @param language the showing language
+     * @param target   the chosen movie
+     * @throws MalformedURLException : to url false
+     */
     private void openShowScene(boolean isNight, String language, String target) throws MalformedURLException {
         Parent root = null;
         try {
@@ -178,8 +204,10 @@ public class SearchController implements Initializable {
             e.printStackTrace();
         }
         if (isNight) {
+            assert root != null;
             root.getStylesheets().add(new File("CSS\\showstage_dark.css").toURI().toURL().toExternalForm());
         } else {
+            assert root != null;
             root.getStylesheets().add(new File("CSS\\showstage.css").toURI().toURL().toExternalForm());
         }
         Scene scene = new Scene(root, 925, 600);

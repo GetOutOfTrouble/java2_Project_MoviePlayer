@@ -52,23 +52,29 @@ public class CategoryController implements Initializable {
     private GridPane grid;
     @FXML
     private ScrollPane sp;
+    /**
+     * current language
+     */
     private String language;
 
+    /**
+     * kind of constructor
+     *
+     * @param language current language
+     */
     public void setLanguage(String language) {
         this.language = language;
     }
 
+    /**
+     * initial the buttons
+     */
     public void category() {
 
         Button[] buttons = {button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14};
         String filename = Main.PropertyPATH + "Category_" + language + ".properties";
         Properties p = new Properties();
-        FileInputStream fis;
-        InputStreamReader isr;
-        try {
-            fis = new FileInputStream(filename);
-            isr = new InputStreamReader(fis, "UTF-8");
-            BufferedReader br = new BufferedReader(isr);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
             p.load(br);
             Object[] cate = p.keySet().toArray();
             for (int i = 0; i < buttons.length; i++) {
@@ -77,7 +83,7 @@ public class CategoryController implements Initializable {
             }
 
         } catch (FileNotFoundException e1) {
-            System.out.println("The file contain director->film is not found");
+            System.out.println("The file contain director->Film is not found");
             e1.printStackTrace();
         } catch (UnsupportedEncodingException e1) {
             e1.printStackTrace();
@@ -86,7 +92,12 @@ public class CategoryController implements Initializable {
         }
     }
 
-
+    /**
+     * initialize and set action
+     *
+     * @param location  fxml location
+     * @param resources no resources need ...
+     */
     public void initialize(URL location, ResourceBundle resources) {
         category();
         Button[] buttons = {button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14};
@@ -121,6 +132,12 @@ public class CategoryController implements Initializable {
 
     }
 
+    /**
+     * @param isNight  is night theme
+     * @param language current language
+     * @param category which category
+     * @throws MalformedURLException cannot load fxml
+     */
     private void openShowPoster(boolean isNight, String language, String category) throws MalformedURLException {
         Parent root = null;
         try {
@@ -135,8 +152,10 @@ public class CategoryController implements Initializable {
             e.printStackTrace();
         }
         if (isNight) {
+            assert root != null;
             root.getStylesheets().add(new File("CSS\\postershow_dark.css").toURI().toURL().toExternalForm());
         } else {
+            assert root != null;
             root.getStylesheets().add(new File("CSS\\postershow.css").toURI().toURL().toExternalForm());
         }
         Scene scene = new Scene(root, 925, 600);
