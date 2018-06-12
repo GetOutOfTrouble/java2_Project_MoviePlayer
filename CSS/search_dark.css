@@ -48,7 +48,6 @@
     -fx-text-fill: #e3e3e3;
     -fx-font-size: 18;
     -fx-font-family: Microsoft YaHei;
-    -fx-font-weight: bold;
 }
 
 {
@@ -72,8 +71,6 @@
 .column-header {
     -fx-text-alignment: center;
     -fx-text-fill: white;
-
-    -fx-border-width: 1;
     -fx-alignment: center;
 }
 
@@ -81,4 +78,24 @@
 
     -fx-fill: #eeeeee
 ;
+}
+.list-cell{
+
+    -fx-background-color:#555555 ;
+}
+
+
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+
+    -fx-padding: 0;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgb(154, 154, 154);
+
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 15em;
+
 }

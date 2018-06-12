@@ -157,18 +157,25 @@ public class SearchController implements Initializable {
                 }
             }
         });
+        tbv.setFocusTraversable(true);
         tbv.setOnKeyPressed((o) -> {
             if (o.getCode().equals(KeyCode.ENTER)) {
-                String name = selected.getFilmName();
-                Controller con = Main.getCon();
-                boolean isNight = con.isNight();
-                try {
-                    openShowScene(isNight, con.getLanguage(), name);
-                } catch (MalformedURLException e1) {
-                    e1.printStackTrace();
+                if (selected != null) {
+                    String name = selected.getFilmName();
+                    Controller con = Main.getCon();
+                    boolean isNight = con.isNight();
+                    try {
+                        openShowScene(isNight, con.getLanguage(), name);
+                    } catch (MalformedURLException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    tbv.getSelectionModel().focus(0);
                 }
+
             }
         });
+
         // images
         try {
             home.setGraphic(InformationGetter.svgGraphic(new File("Images/home.svg").getAbsolutePath(), 0.05));

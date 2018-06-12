@@ -266,10 +266,18 @@ public class Search {
                 n[2 * (i + 1) - 2] = s[0];
                 n[2 * (i + 1) - 1] = s[1].replaceAll("_", ", ");
             }
-            r.setCountry(n[1]);
-            r.setDirector(n[3]);
-            r.setCategory(n[5]);
-            r.setDuration(n[9]);
+            if (language.equals("中文")) {
+                r.setCountry(n[1]);
+                r.setDirector(n[3]);
+                r.setCategory(n[5]);
+                r.setDuration(n[9]);
+            }else {
+                r.setCountry(n[11]);
+                r.setDirector(n[3]);
+                r.setCategory(n[1]);
+                r.setDuration(n[9]);
+            }
+
             r.setFilmName(name);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

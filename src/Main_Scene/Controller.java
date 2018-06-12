@@ -432,6 +432,7 @@ public class Controller implements Initializable, Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         if (isNight) {
             if (root != null) {
                 root.getStylesheets().add(new File("CSS\\search_dark.css").toURI().toURL().toExternalForm());

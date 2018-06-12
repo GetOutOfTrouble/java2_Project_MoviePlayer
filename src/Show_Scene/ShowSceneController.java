@@ -71,7 +71,13 @@ public class ShowSceneController implements Initializable {
     private Button button;
     @FXML
     private Button button2;
+    /**
+     * current language
+     */
     private String language;
+    /**
+     * movie target
+     */
     private String target;
 
     /**
@@ -92,7 +98,7 @@ public class ShowSceneController implements Initializable {
 
     /**
      * initialize information
-     *
+     *only for English language
      * @throws MalformedURLException if there is some false when load property
      */
     public void info() throws MalformedURLException {
@@ -140,6 +146,10 @@ public class ShowSceneController implements Initializable {
         sp.getStyleClass().add("edge-to-edge");
     }
 
+    /**
+     * for chinese language
+     * @throws MalformedURLException url false
+     */
     public void infoChinese() throws MalformedURLException {
         String filename = PropertyPATH + "Film_" + language + ".properties";
         Properties p = new Properties();
@@ -149,6 +159,7 @@ public class ShowSceneController implements Initializable {
             e.printStackTrace();
         }
         if (p.getProperty(target) == null) {
+            target=target.replace(" ", "_");
             target = Search.getChineseName(target);
             try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(PropertyPATH + "Film_" + language + ".properties"), "UTF-8"))) {
                 p.clear();
